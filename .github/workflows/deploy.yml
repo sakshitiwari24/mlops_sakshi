@@ -67,7 +67,7 @@ jobs:
             docker rm mlops-container || true
 
             # 3. Run new container
-            docker run -d -p 8000:8000 --name mlops-container $DOCKER_IMAGE:$IMAGE_TAG
+            docker run -d -p 80:8000 --name mlops-container $DOCKER_IMAGE:$IMAGE_TAG
 
             # 4. Cleanup old unused images
             docker image prune -f
