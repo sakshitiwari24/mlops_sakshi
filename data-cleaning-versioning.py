@@ -8,7 +8,7 @@ from datetime import date
 # 1. Load raw CSV
 # ==============================
 
-path = r"D:\AI-ML\DataSets\Mlops_house_predication_raw_data.csv"
+path = r"C:\Users\AARAV\Downloads\Mlops_house_predication_raw_data.csv"
 
 df = pd.read_csv(path)
 
@@ -33,7 +33,7 @@ print(f"Shape After: {df_clean.shape}")
 # 3. Save cleaned CSV locally
 # ==============================
 
-clean_path = r"D:\AI-ML\DataSets\Mlops_house_predication_clean_v2.csv"
+clean_path = r"C:\Users\AARAV\Downloads\Mlops_house_predication_clean_v1.csv"
 
 df_clean.to_csv(clean_path, index=False)
 
@@ -46,12 +46,12 @@ print("\nClean CSV saved successfully.")
 
 s3 = boto3.client("s3")
 
-BUCKET = "mlopsbuckethouseprice"
+BUCKET = "mlops-prediction-56"
 
 
 def upload_processed_data(local_path):
 
-    key = f"processed/{date.today()}/Mlops_house_predication_clean_v2.csv"
+    key = f"processed/{date.today()}/Mlops_house_predication_clean_v1.csv"
 
     s3.upload_file(
         local_path,
@@ -89,4 +89,4 @@ mlflow.set_experiment("house-price-prediction")
 
 print("\nExperiment configured successfully.")
 print("Features:", X.columns.tolist())
-print("Target:", y.name)
+print("Target:", y.name)    
